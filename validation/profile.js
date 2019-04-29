@@ -32,31 +32,31 @@ module.exports = function validateProfileInput(data) {
 
   if (!isEmpty(data.youtube)) {
     if (!Validator.isURL(data.youtube)) {
-      errors.social.youtube = 'Not a valid URL';
+      errors.youtube = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.twitter)) {
     if (!Validator.isURL(data.twitter)) {
-      errors.social.twitter = 'Not a valid URL';
+      errors.twitter = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.facebook)) {
     if (!Validator.isURL(data.facebook)) {
-      errors.social.facebook = 'Not a valid URL';
+      errors.facebook = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.linkedin)) {
     if (!Validator.isURL(data.linkedin)) {
-      errors.social.linkedin = 'Not a valid URL';
+      errors.linkedin = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.instagram)) {
     if (!Validator.isURL(data.instagram)) {
-      errors.social.instagram = 'Not a valid URL';
+      errors.instagram = 'Not a valid URL';
     }
   }
 
