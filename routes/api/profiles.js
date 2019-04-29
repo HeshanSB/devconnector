@@ -16,6 +16,7 @@ router.get('/test', (req,res) => res.json({ msg: "Profile Works"}));
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res)=>{
     const errors = {};
     Profile.findOne({user: req.user.id})
+    .populate('user',['name','avatar'])
     .then( profile => {
         if(!profile){
             errors.noprofile = 'Therer is no profile';
@@ -58,7 +59,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res)=>{
     .then(profile =>{
         //Update
         if(profile){
-            Profile.findOneAndUpdate({user: req.user.id}, {$set: profileFields},{new: ture})
+            Profile.findOneAndUpdate({user: req.user.id}, {$set: profileFields},{new: true})
             .then(profile => res.json(profile));
         }
         //Create
