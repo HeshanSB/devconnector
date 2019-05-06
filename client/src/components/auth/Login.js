@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import classnames from 'classnames';
 
 class Login extends Component {
   constructor(){
@@ -25,6 +26,7 @@ class Login extends Component {
   }
 
   render() {
+    const {errors} = this.state;
     return (
       <div>
         <div className="login">
@@ -36,12 +38,18 @@ class Login extends Component {
                 <form onSubmit={this.onSubmit}>
                   <div className="form-group">
                     <input type="email" 
-                    className="form-control form-control-lg" 
+                    className={classnames("form-control form-control-lg", {
+                      'is-invalid': errors.email
+                    })}
                     placeholder="Email Address" 
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange} />
+                    {errors.email && (
+                      <div className="invalid-feedback">{errors.email}</div>
+                    )}
                   </div>
+
                   <div className="form-group">
                     <input type="password" 
                     className="form-control form-control-lg" 
